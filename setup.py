@@ -10,7 +10,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 # Setting up
 setup(
-    name="vidstream",
+    name="multi-example-texture-synthesis",
     version=VERSION,
     author="Maxim Gorshkov",
     description=DESCRIPTION,
