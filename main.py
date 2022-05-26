@@ -112,7 +112,7 @@ class Window():
                 self.interpolation_slots[slot] = style_tensor
                 statuses[slot].config(text='Loaded')
 
-                if not None in self.interpolation_slots:
+                if None not in self.interpolation_slots:
                     compute_btn.config(state='active')
             else:
                 print("why")
@@ -121,7 +121,7 @@ class Window():
         action2 = lambda style_tensor: action(style_tensor, 1)
 
         def compute(alpha):
-            assert not None in self.interpolation_slots
+            assert None not in self.interpolation_slots
             alpha = process_str_value(alpha, 0, float)
             if not 0 <= alpha <= 1:
                 tk.messagebox.showerror("Exception", "alpha must be in [0, 1]")
@@ -177,7 +177,7 @@ class Window():
                 self.extraction_slots[slot] = style_tensor
                 statuses[slot].config(text='Loaded')
 
-                if not None in self.extraction_slots:
+                if None not in self.extraction_slots:
                     compute_btn.config(state='active')
             else:
                 print("why")
@@ -186,7 +186,7 @@ class Window():
         action2 = lambda style_tensor: action(style_tensor, 1)
 
         def compute():
-            assert not None in self.extraction_slots
+            assert None not in self.extraction_slots
             result_tensor, _ = style_attribute_extraction_svm(self.extraction_slots[0], self.extraction_slots[1])
             self.update_out(result_tensor)
 
@@ -227,7 +227,7 @@ class Window():
                 self.linear_slots[slot] = style_tensor
                 statuses[slot].config(text='Loaded')
 
-                if not None in self.linear_slots:
+                if None not in self.linear_slots:
                     compute_btn.config(state='active')
             else:
                 print("why")
@@ -236,7 +236,7 @@ class Window():
         action2 = lambda style_tensor: action(style_tensor, 1)
 
         def compute(alpha):
-            assert not None in self.linear_slots
+            assert None not in self.linear_slots
             alpha = process_str_value(alpha, 0, float)
 
             result_tensor = self.linear_slots[0] + self.linear_slots[1] * alpha
