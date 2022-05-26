@@ -24,13 +24,23 @@ class GenerateDialog(tk.Toplevel):
         self.default_w, self.default_h = 256, 256
         self.default_n_iter = 20
 
+        self.generated_texture = None
+
     def show_interface(self):
         self.settings_panel_frame = self.settings_panel(self.frame)
         self.settings_panel_frame.grid(row=0, column=0, sticky='NWE')
 
-        self.generate_btn = tk.Button(self.frame, text="Generate", command=self.generate)
-        self.generate_btn.grid(row=1, column=0, padx=[5, 0], sticky='SWE')
+        self.buttons_frame = tk.Frame(self.frame, relief='flat', borderwidth=0, pady=5)
 
+        self.generate_btn = tk.Button(self.buttons_frame, text="Generate", command=self.generate)
+        self.generate_btn.grid(row=0, column=0, padx=[5, 0], sticky='WE')
+
+        self.save_btn = tk.Button(self.buttons_frame, text="Save", state='disable', command=self.save_image)
+        self.save_btn.grid(row=1, column=0, padx=[5, 0], sticky='WE')
+
+        self.buttons_frame.grid(row=1, column=0, sticky='SWE')
+
+        
         self.result_panel_frame = self.result_panel(self.frame)
         self.result_panel_frame.grid(row=0, column=1, rowspan=2, padx=[10, 0])
 
@@ -73,6 +83,7 @@ class GenerateDialog(tk.Toplevel):
         return settings_panel_frame
 
     def update_image(self, generated_texture):
+        self.generated_texture = generated_texture
         self.img = ImageTk.PhotoImage(generated_texture)
         self.image_label.config(image=self.img)
 
@@ -96,6 +107,7 @@ class GenerateDialog(tk.Toplevel):
 
         self.pb_label.config(text='Generating...')
         self.generate_btn.config(state='disable')
+        self.save_btn.config(state='disable')
         self.pb.start()
         generator_thread = Generator(self.window.SG, self.window.out, [w, h], n_iter)
         generator_thread.start()
@@ -108,5 +120,22 @@ class GenerateDialog(tk.Toplevel):
         else:
             self.pb.stop()
             self.generate_btn.config(state='active')
+            self.save_btn.config(state='active')
             self.pb_label.config(text='Done!')
             self.update_image(generator_thread.generated_texture)
+
+    def save_image(self):
+        try:
+            f = tk.filedialog.asksaveasfile(
+                title='Save image',
+                mode='a', 
+                defaultextension='.png', 
+                initialdir='./'
+            )
+            if f is None:
+                return
+            self.generated_texture.save(f.name)
+            f.close()
+        except Exception as e:
+            print(e)
+            tk.messagebox.showerror("Exception", "Unable to save image")
