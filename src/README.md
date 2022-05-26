@@ -1,1 +1,0 @@
-A package that allows to generate textures of arbitrary size with the ability to edit stylistic features in a meaningfull way
