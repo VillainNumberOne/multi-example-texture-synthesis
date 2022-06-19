@@ -25,7 +25,7 @@ def square_crop(image):
     return transforms.CenterCrop(min(image.size))(image)
 
 
-def image_to_tensor(image, normalize=True):
+def image_to_tensor(image, normalize=False):
     result = transforms.ToTensor()(image)
     if normalize:
         return trans(result).unsqueeze(0)
@@ -33,7 +33,7 @@ def image_to_tensor(image, normalize=True):
         return result.unsqueeze(0)
 
 
-def tensor_to_image(tensor, normalize=True):
+def tensor_to_image(tensor, normalize=False):
     if normalize:
         return transforms.ToPILImage()(inv_trans(tensor[0].clip(-1, 1)))
     else:
