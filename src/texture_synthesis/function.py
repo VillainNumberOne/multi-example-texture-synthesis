@@ -8,15 +8,10 @@ import requests
 import numpy as np
 
 
-STYLE_VECTOR_LENGTH = 3840
+STYLE_VECTOR_LENGTH = 1920
 STYLE_VECTOR_CONFIG = [
     [64, 64],
-    [64, 64],
     [128, 128],
-    [128, 128],
-    [256, 256],
-    [256, 256],
-    [256, 256],
     [256, 256],
     [512, 512]
  ]
@@ -130,14 +125,14 @@ def style_loss(st1, st2):
         style_loss += (metric(mus_st1, mus_st2) + metric(stds_st1, stds_st2)) / len(mus_st1)
     return style_loss
 
-def optimize(base_tensor, style_statistic, feature_extractor, n_iter=50, progress=True):
+def optimize(base_tensor, style_statistic, feature_extractor, n_iter=50, max_iter=20, progress=True):
         if progress:
             iters = tqdm(range(n_iter))
         else:
             iters = range(n_iter)
 
         base_tensor = base_tensor.requires_grad_(True)
-        optimizer = optim.LBFGS([base_tensor], lr=1) 
+        optimizer = optim.LBFGS([base_tensor], lr=1, max_iter=max_iter) 
         
         for i in iters:
             def closure():

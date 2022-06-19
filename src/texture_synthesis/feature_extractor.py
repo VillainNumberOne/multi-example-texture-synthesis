@@ -15,7 +15,7 @@ class FeatureExtractor(nn.Module):
         state_dict_path = '/'.join(('models', 'vgg_normalised.pth'))
 
         self.model = nn.Sequential(*self._load_vgg(state_dict_path)[:last_layer])
-        self.required_features = [3, 6, 10, 13, 17, 20, 23, 26, 30]
+        self.required_features = [3, 10, 17, 30]
 
     def _load_vgg(self, state_dict_path) -> list:
         vgg = vgg_sequential

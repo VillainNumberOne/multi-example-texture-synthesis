@@ -29,9 +29,10 @@ class AdaINAutoencoder(nn.Module):
         decoder.load_state_dict(torch.load(stream))
         return decoder
 
-    def forward(self, x, style_statistic):
+    def forward(self, x, style_statistic, alpha=1):
+        assert 0 <= alpha <= 1
         with torch.no_grad():
             content_feat = self.encoder(x)
             encoded = adaptive_instance_normalization(content_feat, style_statistic)
-            result = self.decoder(encoded)
+            result = self.decoder(content_feat * (1 - alpha) + encoded * alpha)
         return result
