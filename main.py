@@ -1,7 +1,7 @@
-from melts.feature_extractor import FeatureExtractor
-from melts.adain_autoencoder import AdaINAutoencoder
-from melts.function import *
-from melts.gen import TextureGen
+from mexts.feature_extractor import FeatureExtractor
+from mexts.adain_autoencoder import AdaINAutoencoder
+from mexts.function import *
+from mexts.gen import TextureGen
 import torch
 
 def main():
