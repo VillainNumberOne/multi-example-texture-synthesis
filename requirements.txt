@@ -1,0 +1,8 @@
+numpy==1.19.5
+Pillow==9.1.1
+requests==2.25.1
+scikit_learn==1.1.1
+setuptools==49.2.1
+torch==1.7.1+cu110
+torchvision==0.8.2+cu110
+tqdm==4.56.2
