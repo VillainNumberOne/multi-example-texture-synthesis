@@ -1,15 +1,16 @@
 import torch
 import torch.nn as nn
-from .net import vgg_sequential, decoder_sequential 
+from .net import vgg_sequential, decoder_sequential
 from .function import adaptive_instance_normalization
 import pkg_resources
+
 
 class AdaINAutoencoder(nn.Module):
     def __init__(self) -> None:
         super(AdaINAutoencoder, self).__init__()
 
-        encoder_state_dict_path = '/'.join(('models', 'vgg_normalised.pth'))
-        decoder_state_dict_path = '/'.join(('models', 'decoder.pth'))
+        encoder_state_dict_path = "/".join(("models", "vgg_normalised.pth"))
+        decoder_state_dict_path = "/".join(("models", "decoder.pth"))
         encoder_last_layer = 31
 
         self.encoder = self._load_encoder(encoder_state_dict_path, encoder_last_layer)

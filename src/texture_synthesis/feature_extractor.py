@@ -12,7 +12,7 @@ class FeatureExtractor(nn.Module):
         super(FeatureExtractor, self).__init__()
 
         last_layer = 31
-        state_dict_path = '/'.join(('models', 'vgg_normalised.pth'))
+        state_dict_path = "/".join(("models", "vgg_normalised.pth"))
 
         self.model = nn.Sequential(*self._load_vgg(state_dict_path)[:last_layer])
         self.required_features = [3, 10, 17, 30]
@@ -31,7 +31,7 @@ class FeatureExtractor(nn.Module):
 
     @staticmethod
     def _check_K(image_tensor_wh: list, K: int):
-        assert min(image_tensor_wh) // 2 ** K >= 16
+        assert min(image_tensor_wh) // 2**K >= 16
 
     @staticmethod
     def _check_image_tensor(image_tensor: torch.Tensor) -> None:
@@ -41,7 +41,9 @@ class FeatureExtractor(nn.Module):
         assert c == 3
         assert min(w, h) >= 16
 
-    def get_style_representation(self, image_tensor: torch.Tensor, K=-1) -> torch.Tensor:
+    def get_style_representation(
+        self, image_tensor: torch.Tensor, K=-1
+    ) -> torch.Tensor:
         self._check_image_tensor(image_tensor)
         assert isinstance(K, int)
         if K < 0:
@@ -49,10 +51,10 @@ class FeatureExtractor(nn.Module):
         else:
             self._check_K(image_tensor.shape[-2:], K)
 
-        b, c, w, h = image_tensor.shape
+        _, _, w, h = image_tensor.shape
         pyramid_levels_statistics = []
-        for k in range(K+1):
-            scale = 2 ** k
+        for k in range(K + 1):
+            scale = 2**k
             level_image_tensor = F.resize(image_tensor, (w // scale, h // scale))
 
             with torch.no_grad():
@@ -67,6 +69,6 @@ class FeatureExtractor(nn.Module):
         features = []
         for layer_idx, layer in enumerate(self.model):
             x = layer(x)
-            if (layer_idx in self.required_features):
+            if layer_idx in self.required_features:
                 features.append(x)
         return features
