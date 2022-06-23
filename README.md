@@ -147,7 +147,7 @@ To use GUI, you can clone this repository and run setup.py after that launch the
 </div>
 
 
-## Acknowledgement
+## References
 
 [1] Leon A. Gatys, Alexander S. Ecker, Matthias Bethge (2015). Texture synthesis and the controlled generation of natural stimuli using convolutional neural net-works. CoRR, abs/1505.07376.
 
