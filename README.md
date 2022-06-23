@@ -5,7 +5,7 @@
 
 A package that allows to generate textures of arbitrary size with the ability to edit stylistic attributes in a meaningfull way
 
-<img src="https://sun9-34.userapi.com/impf/ojZjce-0oA6ba-Ah5M1SlBd17OOTPeiYDLvkNg/vMigSPLP66c.jpg?size=2560x1298&quality=96&sign=08d5dc66d3a29e2f900f29ad769d569f&type=album" width="1000">
+<img src="https://sun9-61.userapi.com/impf/c7Iz8fM3g51dmdlpRyBY025QS0DqYbW2LdAsFA/USpLuFvxcdU.jpg?size=2560x1298&quality=96&sign=1b2dea0fe18a5bde19794c77e756e7ad&type=album" width="1000">
 
 </div>
 
@@ -147,7 +147,7 @@ To use GUI, you can clone this repository and run setup.py after that launch the
 </div>
 
 
-## References
+## Acknowledgement
 
 [1] Leon A. Gatys, Alexander S. Ecker, Matthias Bethge (2015). Texture synthesis and the controlled generation of natural stimuli using convolutional neural net-works. CoRR, abs/1505.07376.
 
@@ -160,3 +160,4 @@ To use GUI, you can clone this repository and run setup.py after that launch the
 [5] 16.	Shen, Y., Gu, J., Tang, X., & Zhou, B. (2019). Interpreting the Latent Space of GANs for Semantic Face Editing. arXiv. https://doi.org/10.48550/ARXIV.1907.10786
 
 Also used some code and state-dicts from [this implementation](https://github.com/naoto0804/pytorch-AdaIN) of [3]
+
