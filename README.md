@@ -155,9 +155,9 @@ To use GUI, you can clone this repository and run setup.py after that launch the
 
 [3] Huang, X., & Belongie, S. (2017). Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization. arXiv. https://doi.org/10.48550/ARXIV.1703.06868 
 
-[4] 15.	Upchurch, P., Gardner, J., Pleiss, G., Pless, R., Snavely, N., Bala, K., & Wein-berger, K. (2016). Deep Feature Interpolation for Image Content Changes. arXiv. https://doi.org/10.48550/ARXIV.1611.05507
+[4] Upchurch, P., Gardner, J., Pleiss, G., Pless, R., Snavely, N., Bala, K., & Wein-berger, K. (2016). Deep Feature Interpolation for Image Content Changes. arXiv. https://doi.org/10.48550/ARXIV.1611.05507
 
-[5] 16.	Shen, Y., Gu, J., Tang, X., & Zhou, B. (2019). Interpreting the Latent Space of GANs for Semantic Face Editing. arXiv. https://doi.org/10.48550/ARXIV.1907.10786
+[5] Shen, Y., Gu, J., Tang, X., & Zhou, B. (2019). Interpreting the Latent Space of GANs for Semantic Face Editing. arXiv. https://doi.org/10.48550/ARXIV.1907.10786
 
 Also used some code and state-dicts from [this implementation](https://github.com/naoto0804/pytorch-AdaIN) of [3]
 
