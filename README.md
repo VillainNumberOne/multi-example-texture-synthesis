@@ -50,12 +50,6 @@ image = load_from_url("image_url").resize((256, 256))
 t = FE.get_style_representation(image_to_tensor(image).to(device), K=2)
 ```
 
-The image below shows a conceptual scheme of the algorithm for obtaining style representation vectors.
-
-<div align="center">
-<img src="https://sun9-77.userapi.com/impf/wLaNd-sRuUwYRldcbY5B_a9KEd--cAHWYXMZZw/qq2IA9R9hkU.jpg?size=1002x826&quality=96&sign=2f51be756eb117b0ddfc72e6b2ed6df4&type=album" width="500">
-</div>
-
 
 Generating a preview:
 ```python
@@ -105,11 +99,7 @@ result_style_tensor = t1 * (1 - l) + t2 * l
 This part was inspired by the papers "Deep Feature Interpolation for Image Content Changes" [4] and "Interpreting the Latent Space of GANs for Semantic Face Editing" [5].
 <br>
 To extract individual stylistic attributes, such as "grass between rocks" two methods are adopted.
-The first one, naïve, includes finding mean style representation vectors for two sets of images: one that shows a particular attribute and one that doesn't. Then the difference between these two vectors represents style difference. The conceptual scheme of this method is shown in the image below.
-
-<div align="center">
-<img src="https://sun9-84.userapi.com/impf/_f2M6ut1Fw0aJxp8duHEhaa4yiEtBhBgQGwnrw/YE98r-83K8U.jpg?size=1345x593&quality=96&sign=6eaa7aac66998262460cf2f817218017&type=album" width="500">
-</div>
+The first one, naïve, includes finding mean style representation vectors for two sets of images: one that shows a particular attribute and one that doesn't. Then the difference between these two vectors represents style difference.
 
 Code:
 ```python
@@ -117,21 +107,13 @@ from mexts.style_features_manipulation import style_attribute_extraction_svm
 style_difference = style_attribute_extraction_means(style_tensor_set1, style_tensor_set2)
 ```
 
-The second method is based on the assumption that for any binary stylistic attribute, there exists a hyperplane on the one side of which the attribute appears, and on the other doesn't. Then the normal to this hyperplane represents style difference. The conceptual scheme of this method is shown in the image below.
-
-<div align="center">
-<img src="https://sun9-9.userapi.com/impf/YVxk9pt7IcXYcJ_1bzXnuCsmquqoffybOGkAZg/iEoTzSEzUcY.jpg?size=1327x583&quality=96&sign=ab367f7a9c110ca4e84c61cc15279f16&type=album" width="500">
-</div>
+The second method is based on the assumption that for any binary stylistic attribute, there exists a hyperplane on the one side of which the attribute appears, and on the other doesn't. Then the normal to this hyperplane represents style difference.
 
 Code:
 ```python
 from mexts.style_features_manipulation import style_attribute_extraction_svm
 style_difference = style_attribute_extraction_svm(style_tensor_set1, style_tensor_set2)
 ```
-Obtained style difference vector can be added to a target texture vector:
-$$
-{\overrightarrow{t}}^{*} = {\overrightarrow{t}}_{1} + \lambda\overrightarrow{d}\
-$$
 
 The image below shows a comparison between these two methods.
 <div align="center">
@@ -140,7 +122,7 @@ The image below shows a comparison between these two methods.
 
 ### 3. GUI
 
-To use GUI, you can clone this repository and run setup.py after that launch the app by running gui/main.py. If you installed the package via pip, you may download only the folder gui/.
+To use GUI, you can clone this repository and run setup.py. After the installation is complete, launch the app by running gui/main.py. If you installed the package via pip, you may download only the folder gui/.
 
 <div align="center">
 <img src="https://sun9-78.userapi.com/impf/icI4Gwi3_eSOYk7oS2xV0MHXWgLqRAMdEHwwZQ/1okcQ2KnYxE.jpg?size=1332x804&quality=96&sign=84754890365e5aa7b153d79704fabcb8&type=album" width="500">
@@ -159,5 +141,5 @@ To use GUI, you can clone this repository and run setup.py after that launch the
 
 [5] Shen, Y., Gu, J., Tang, X., & Zhou, B. (2019). Interpreting the Latent Space of GANs for Semantic Face Editing. arXiv. https://doi.org/10.48550/ARXIV.1907.10786
 
-Also used some code and state-dicts from [this implementation](https://github.com/naoto0804/pytorch-AdaIN) of [3]
+Also used some code and state-dicts from [this implementation](https://github.com/naoto0804/pytorch-AdaIN) of [3].
 
