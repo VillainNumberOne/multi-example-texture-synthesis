@@ -12,6 +12,9 @@ A package that allows to generate textures of arbitrary size with the ability to
 ### Installation
 
     pip install mexts
+    
+### Demo
+https://colab.research.google.com/drive/1b9YMnm2q9rjrZFX7aG75veUflcPwdFLX?usp=sharing
 
 ## Features 
 
@@ -79,10 +82,6 @@ Algebraic operations with style representation vectors can give predictable resu
 
 #### 2.1. Interpolation
 It is possible to "interpolate" between two real textures. 
-
-$$
-{\overrightarrow{t}}^{*} = \lambda{\overrightarrow{t}}_{1} + (1 - \lambda){\overrightarrow{t}}_{2},\text{  }\lambda \in (0,1)
-$$
 
 Code:
 ```python
