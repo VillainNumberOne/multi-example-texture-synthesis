@@ -98,7 +98,7 @@ result_style_tensor = t1 * (1 - l) + t2 * l
 This part was inspired by the papers "Deep Feature Interpolation for Image Content Changes" [4] and "Interpreting the Latent Space of GANs for Semantic Face Editing" [5].
 <br>
 To extract individual stylistic attributes, such as "grass between rocks" two methods are adopted.
-The first one, naïve, includes finding mean style representation vectors for two sets of images: one that shows a particular attribute and one that doesn't. Then the difference between these two vectors represents style difference.
+The first one, naïve, includes finding mean style representation vectors for two sets of images: for one that shows a particular attribute and for one that doesn't. Then the difference between these two vectors represents style difference.
 
 Code:
 ```python
@@ -106,7 +106,7 @@ from mexts.style_features_manipulation import style_attribute_extraction_svm
 style_difference = style_attribute_extraction_means(style_tensor_set1, style_tensor_set2)
 ```
 
-The second method is based on the assumption that for any binary stylistic attribute, there exists a hyperplane on the one side of which the attribute appears, and on the other doesn't. Then the normal to this hyperplane represents style difference.
+The second method is based on the assumption that for any binary stylistic attribute, there exists a hyperplane on the one side of which the attribute appears, and on the other doesn't. Then the normal to this hyperplane represents style difference. To find the hyperplane, I use SVM. It should be possible to use other algorithms.
 
 Code:
 ```python
