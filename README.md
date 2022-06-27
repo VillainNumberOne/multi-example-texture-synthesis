@@ -77,7 +77,7 @@ final = tensor_to_image(result[0])
 ```
 
 
-### 2. Manipulating generated texture style with multiple examples
+### 2. Style manipulation
 Algebraic operations with style representation vectors can give predictable results.
 
 #### 2.1. Interpolation
