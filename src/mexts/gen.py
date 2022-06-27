@@ -32,7 +32,7 @@ class TextureGen:
                 h_level = h
             else:
                 w_level = w_base * 2**k
-                h_level = w_base * 2**k
+                h_level = h_base * 2**k
 
             print((w_level, h_level))
             base_tensor = F.resize(base_tensor, (w_level, h_level))
