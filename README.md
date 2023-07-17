@@ -3,7 +3,7 @@
 # `MExTS`
 `multi example-based texture synthesis`
 
-A package that allows to generate textures of arbitrary size with the ability to edit stylistic attributes in a meaningfull way
+A package that allows to generate textures of arbitrary size with the ability to edit stylistic attributes in a meaningful way
 
 <img src="https://sun9-61.userapi.com/impf/c7Iz8fM3g51dmdlpRyBY025QS0DqYbW2LdAsFA/USpLuFvxcdU.jpg?size=2560x1298&quality=96&sign=1b2dea0fe18a5bde19794c77e756e7ad&type=album" width="1000">
 
